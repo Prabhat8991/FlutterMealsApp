@@ -29,7 +29,7 @@ class TabState extends State {
     String dynamicTitle = "Categories";
 
     if (activeScreenIndex == 1) {
-      activeScreen = const MealsScreen(title: "Favourites", meals: []);
+      activeScreen = const MealsScreen(meals: []);
       dynamicTitle = "Favorites";
     }
 
@@ -41,6 +41,7 @@ class TabState extends State {
       body: activeScreen,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _setActiveScreenIndex,
+        currentIndex: activeScreenIndex,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.set_meal), label: "Categories"),
           BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Favorites")
