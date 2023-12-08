@@ -4,9 +4,11 @@ import 'package:meals/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem({super.key, required this.meal});
+  const MealItem({super.key, required this.meal, required this.onMealItemSelected});
 
   final Meal meal;
+
+  final void Function(Meal meal) onMealItemSelected;
 
   String get complexityText {
     return meal.complexity.name[0].toUpperCase() +
@@ -25,7 +27,9 @@ class MealItem extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          onMealItemSelected(meal);
+        },
         child: Stack(
           children: [
             FadeInImage(
