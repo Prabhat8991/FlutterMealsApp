@@ -27,7 +27,14 @@ class MealDetailsScreen extends ConsumerWidget {
                         ? "Meal added to favourite"
                         : "Meal removed from favourite")));
               },
-              icon: Icon(isFav? Icons.star: Icons.star_outline))
+              icon: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 300),
+                transitionBuilder: (child, animation) {
+                  return RotationTransition(turns: Tween(begin: 0.8, end: 1.0).animate(
+                      animation), child: child,);
+                },
+                child: Icon(isFav? Icons.star: Icons.star_outline, key: ValueKey(isFav),),
+              ))
         ],
       ),
       body: ListView(children: [
