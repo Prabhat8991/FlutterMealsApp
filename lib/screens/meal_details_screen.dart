@@ -30,21 +30,29 @@ class MealDetailsScreen extends ConsumerWidget {
               icon: AnimatedSwitcher(
                 duration: const Duration(milliseconds: 300),
                 transitionBuilder: (child, animation) {
-                  return RotationTransition(turns: Tween(begin: 0.8, end: 1.0).animate(
-                      animation), child: child,);
+                  return RotationTransition(
+                    turns: Tween(begin: 0.8, end: 1.0).animate(animation),
+                    child: child,
+                  );
                 },
-                child: Icon(isFav? Icons.star: Icons.star_outline, key: ValueKey(isFav),),
+                child: Icon(
+                  isFav ? Icons.star : Icons.star_outline,
+                  key: ValueKey(isFav),
+                ),
               ))
         ],
       ),
       body: ListView(children: [
         Column(
           children: [
-            Image.network(
-              meal.imageUrl,
-              fit: BoxFit.cover,
-              height: 300,
-              width: double.infinity,
+            Hero(
+              tag: meal.id,
+              child: Image.network(
+                meal.imageUrl,
+                fit: BoxFit.cover,
+                height: 300,
+                width: double.infinity,
+              ),
             ),
             const SizedBox(
               height: 20,
